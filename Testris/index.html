@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #board{
+            display: grid;
+            grid-template-columns: repeat(4, 4rem);
+            grid-template-rows: repeat(4, 4rem);
+        }
+        #board > div{
+            border: 1px solid gray;
+        }
+    </style>
+    <script src="controller.js"></script>
+</head>
+
+<body onload="init()">
+    <div id="app"></div>
+    <script>
+        // model
+        let board;
+
+        // view
+        function updateView() {
+            let squaresHtml = '';
+            for (let color of board) {
+                squaresHtml += /*HTML*/`
+                    <div style="background-color: ${color}"></div>
+                `;
+            }
+            document.getElementById('app').innerHTML = /*HTML*/`
+                <div id="board">
+                    ${squaresHtml}
+                </div>
+                <button onclick="addL('darkblue')">Bytt til L</button>
+                <button onclick="addT('orange')">Bytt til T</button>
+                <button onclick="addI('purple')">Bytt til I</button>
+                <button onclick="rotate()">Roter</button>
+            `;
+        }
+    </script>
+</body>
+
+</html>

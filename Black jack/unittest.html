@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Test Suite</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.19.4.css">
+
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="https://code.jquery.com/qunit/qunit-2.19.4.js"></script>
+    <script src="exercise1.js"></script>
+    <script>
+        QUnit.test('test 1', function (assert) {
+            let cards = ['Hjerter 7', 'Spar 5', 'Ruter 3'];
+            let points = countBlackJackPoints(cards);
+            assert.equal(points, 15);
+        });
+
+        QUnit.test('test 2', function (assert) {
+            let cards = ['Hjerter Dame', 'Spar 5', 'Ruter 3'];
+            let points = countBlackJackPoints(cards);
+            assert.equal(points, 18);
+        });
+
+        QUnit.test('test 3', function (assert) {
+            let cards = [];
+            let points = countBlackJackPoints(cards);
+            assert.equal(points, 0);
+        });
+
+        QUnit.test('test 4', function (assert) {
+            let cards = null;
+            let points = countBlackJackPoints(cards);
+            assert.equal(points, null);
+        });
+
+        QUnit.test('test 5', function (assert) {
+            let cards = ['Ruter Ess'];
+            let points = countBlackJackPoints(cards);
+            assert.equal(points, 11);
+        });
+
+        QUnit.test('test 6', function (assert) {
+            let cards = ['Hjerter Dame', 'Spar Knekt', 'Ruter Ess'];
+            let points = countBlackJackPoints(cards);
+            assert.equal(points, 21);
+        });
+
+        QUnit.test('test 7', function (assert) {
+            let cards = ['Ruter Ess', 'Spar Ess', 'Hjerter Ess', 'Ruter Ess'];
+            let points = countBlackJackPoints(cards);
+            assert.equal(points, 14);
+        });
+
+        QUnit.test('test 8', function (assert) {
+            let cards = ['Hjerter Ess', 'Ruter 8', 'Ruter Ess', 'Spar Ess', 'Kløver 5'];
+            let points = countBlackJackPoints(cards);
+            assert.equal(points, 16);
+        });
+    </script>
+</body>
